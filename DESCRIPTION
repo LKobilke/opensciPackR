@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Lara", "Kobilke", , "lara.kobilke@ifkw.lmu.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-6194-4724"))
-Author:  Kobilke
+Author:  Lara Kobilke
 Maintainer: Lara Kobilke<lara.kobi@gmail.com>
 Description: This package creates a template package for data distribution, management, analysis, sharing and interactive exploration. The template is designed based on the recommended R package design principles and incorporates best practices for open science. It offers a predefined structure and set of functions to organize, document, and share research data and analysis. Researchers can easily adopt this template to create their own customized R packages for their research projects.
 License: MIT + file LICENSE

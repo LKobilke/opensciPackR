@@ -21,9 +21,15 @@ createOpenSciPackage <- function(package_name, path = NULL) {
   setwd(file.path(path, package_name))
 
   # Prompt user for information
-  author_name <- readline(prompt = "Enter the author's name: ")
+  author_name <- readline(prompt = "Please enter the author's first name(s), followed by a space,/n and then the author's surname or family name: ")
   author_email <- readline(prompt = "Enter the author's email: ")
-  description_input <- readline(prompt = "Enter a first description of your package: ")
+  author_orcid <- readline(prompt = "Enter the author's ORCID (if any): ")
+  description_input <- readline(prompt = "Please enter an initial description of your package,/n including its primary purpose and intended audience: ")
+
+  # Split the author name into first and last names
+  name_parts <- strsplit(author_name, " ")[[1]]
+  first_name <- paste(name_parts[-length(name_parts)], collapse = " ")
+  last_name <- name_parts[length(name_parts)]
 
   # Add DESCRIPTION entries
   usethis::use_description(fields = list(
@@ -34,7 +40,13 @@ createOpenSciPackage <- function(package_name, path = NULL) {
     'License' = 'MIT',
     'Imports' = 'learnr',
     'Encoding' = 'UTF-8',
-    'LazyData' = 'true'
+    'LazyData' = 'true',
+    'Authors@R' = paste0("person(given = \"", first_name,
+                         "\", family = \"", last_name,
+                         "\", role = c(\"aut\", \"cre\"), ",
+                         "email = \"", author_email, "\", ",
+                         ifelse(author_orcid != "", paste0("comment = c(ORCID = \"", author_orcid, "\")"), ""),
+                         ")")
   ))
 
   # Create core R scripts
