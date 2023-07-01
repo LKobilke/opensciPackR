@@ -7,24 +7,25 @@
 #' @param path The directory in which to create the package. Defaults to the current working directory.
 #'
 #' @return A message indicating the package was created.
-#' @export
+#' @export create_openscipkg
 #' @examples
 #' \dontrun{
-#' createOpenSciPackage("myPackage", path = "/myPath")
+#' create_openscipkg("myPackage", path = "/myPath")
 #' }
-createOpenSciPackage <- function(package_name, path = NULL) {
+create_openscipkg <- function(package_name, path = NULL) {
 
   # Create the new package
   usethis::create_package(path = file.path(path, package_name))
 
   # Change the working directory to the new package
   setwd(file.path(path, package_name))
+  wd <- getwd()
 
   # Prompt user for information
-  author_name <- readline(prompt = "Please enter the author's first name(s), followed by a space,/n and then the author's surname or family name: ")
+  author_name <- readline(prompt = "Please enter the author's first name(s), followed by a space, and then the author's surname or family name: ")
   author_email <- readline(prompt = "Enter the author's email: ")
   author_orcid <- readline(prompt = "Enter the author's ORCID (if any): ")
-  description_input <- readline(prompt = "Please enter an initial description of your package,/n including its primary purpose and intended audience: ")
+  description_input <- readline(prompt = "Please enter an initial description of your package, including its primary purpose and intended audience: ")
 
   # Split the author name into first and last names
   name_parts <- strsplit(author_name, " ")[[1]]
@@ -105,6 +106,10 @@ createOpenSciPackage <- function(package_name, path = NULL) {
 
   # Install required packages
   usethis::use_package("learnr")
+
+  # Upload raw data
+  data_path <- paste0(wd, "/data-raw", collapse = NULL)
+  upload_data(path = data_path)
 
   # Return a message indicating the package was created
   return("Open Science Template Package created successfully")

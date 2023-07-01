@@ -21,7 +21,7 @@ Here's a basic example that demonstrates the main function of opensciPackR:
 library(opensciPackR)
 
 # Create a new opensciPackR project
-createOpenSciPackage("MyResearchPackage")
+create_openscipkg("MyResearchPackage")
 ```
 
 ## Licence
