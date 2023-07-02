@@ -171,7 +171,7 @@ upload_data <- function(path = NULL) {
 
   writeLines(c("#' analyze_data()",
                "#' ",
-               "#' @description The basic data analysis function. It is used for conducting statistical analysis and visualization of the cleaned data. It reads the cleaned dataset, computes descriptive statistics, creates visualizations, and returns the results. This function helps in uncovering insights and patterns from the data.",
+               "#' @description The basic data analysis function. It is used for conducting statistical analysis and visualization of the cleaned data. It reads the cleaned dataset, computes descriptive statistics, creates visualizations, and returns the results.",
                "#' @param data a [tibble][tibble::tibble-package]",
                "#' ",
                "#' @examples",

@@ -12,6 +12,7 @@ Imports:
 	haven,
 	readr,
 	readxl,
+	stringr,
 	tools,
 	usethis,
 	utils

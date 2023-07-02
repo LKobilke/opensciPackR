@@ -104,6 +104,9 @@ create_openscipkg <- function(package_name, path = NULL) {
   data_path <- paste0(wd, "/data-raw", collapse = NULL)
   upload_data(path = data_path)
 
+  # Update the readme.md
+  opensciPackR::update_readme(description = description_input, path = wd)
+
   # Return a message indicating the package was created
   return("Open Science Template Package created successfully! If you want to get recommendations on what to do next with your package, see https://github.com/LKobilke/opensciPackR#next-steps-after-package-creation.")
 }
