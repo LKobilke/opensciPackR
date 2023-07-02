@@ -103,6 +103,7 @@ create_openscipkg <- function(package_name, path = NULL) {
   dir.create("inst")
   dir.create("inst/sandbox")
   dir.create("tests")
+  dir.create("vignettes")
 
   # Install required packages
   usethis::use_package("learnr")
@@ -112,5 +113,5 @@ create_openscipkg <- function(package_name, path = NULL) {
   upload_data(path = data_path)
 
   # Return a message indicating the package was created
-  return("Open Science Template Package created successfully")
+  return("Open Science Template Package created successfully! If you want to get recommendations on what to do next with your package, see the README on https://github.com/LKobilke/opensciPackR.")
 }
