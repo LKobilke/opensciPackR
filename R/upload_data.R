@@ -86,7 +86,7 @@ upload_data <- function(path = NULL) {
     dir.create("data-raw")
   }
 
-  # Create new file path in the "data-raw" directory
+  # Create new file path within the "data-raw" directory
   new_file_path <- file.path("data-raw", file_name)
 
   # Write the data to the new CSV file
@@ -125,6 +125,70 @@ upload_data <- function(path = NULL) {
 
   # Create the processed dataset
   source(paste0(path, "/data-raw/", paste0(new_data_name, ".R", collapse = NULL)))
+
+  # Update the core R scripts prepare_data and analyze_data
+  writeLines(c("#' Data preparation function",
+               "#' @export",
+               "prepare_data <- function() {",
+               "  # Load the processed data",
+               paste0(new_data_name, " <- opensciPackR::", new_data_name),
+               "  #",
+               "  # Add data preparation code here, for example:",
+               "  #",
+               "  # Prepare the data",
+               "  # 1. Handle Missing Data",
+               paste0(new_data_name, " %>%"),
+               "drop_na()",
+               "  #",
+               "  # 2. Convert Data Types if Necessary",
+               paste0(new_data_name, " %>%"),
+               "dplyr::select(tidyselect::where(is.numeric)) %>%",
+               "dplyr::select(tidyselect::last_col()) %>%",
+               "dplyr::mutate(factor_var = as.factor(tidyselect::last_col()))",
+               "  #",
+               "  # 3. Normalize/Scale Data if Necessary",
+               paste0(new_data_name, " %>%"),
+               "dplyr::select(tidyselect::where(is.numeric)) %>%",
+               "dplyr::select(tidyselect::last_col()) %>%",
+               "tidycomm::z_scale(tidyselect::last_col())",
+               "}"),
+             "R/prepare_data.R")
+
+  writeLines(c("#' Data analysis function",
+               "#' @export",
+               "analyze_data <- function() {",
+               "  # Load the processed data",
+               paste0(new_data_name, " <- opensciPackR::", new_data_name),
+               "  #",
+               "  # Add data analysis code here, for example:",
+               "  #",
+               "  # Analyze the data",
+               "  # 1. Summary Statistics",
+               paste0(new_data_name, " %>%"),
+               "tidycomm::describe() %>%",
+               "  #",
+               "  # 2. Data Visualization",
+               paste0(new_data_name, " %>%"),
+               "dplyr::select(tidyselect::where(is.numeric)) %>%",
+               "dplyr::select(tidyselect::last_col()) %>%",
+               "tidycomm::describe() %>%",
+               "tidycomm::visualize()",
+               "  #",
+               "  # 3. Apply Statistical Tests if Needed",
+               "  # For example, you might want to run a correlation",
+               paste0(new_data_name, " %>%"),
+               "dplyr::select(tidyselect::where(is.numeric)) %>%",
+               "dplyr::select(tidyselect::last_col(1):tidyselect::last_col()) %>%",
+               "tidycomm::correlate()",
+               "  #",
+               "  # 4. Model Building",
+               "  # You might want to build a regression model for example",
+               paste0(new_data_name, " %>%"),
+               "dplyr::select(tidyselect::where(is.numeric)) %>%",
+               "dplyr::select(tidyselect::last_col(1):tidyselect::last_col()) %>%",
+               "tidycomm::regress(tidyselect::last_col(1),tidyselect::last_col())",
+               "}"),
+             "R/analyze_data.R")
 
   # Return a message indicating the data was uploaded
   return(paste0("Data '", new_data_name, "' uploaded successfully to ", new_file_path))

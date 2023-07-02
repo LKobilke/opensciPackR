@@ -51,23 +51,8 @@ create_openscipkg <- function(package_name, path = NULL) {
   ))
 
   # Create core R scripts
-  file.create("R/data_preparation.R")
-  file.create("R/data_analysis.R")
-
-  # Add content to R scripts
-  writeLines(c("#' Data preparation function",
-               "#' @export",
-               "data_preparation <- function() {",
-               "  # Add data preparation code here",
-               "}"),
-             "R/data_preparation.R")
-
-  writeLines(c("#' Data analysis function",
-               "#' @export",
-               "data_analysis <- function() {",
-               "  # Add data analysis code here",
-               "}"),
-             "R/data_analysis.R")
+  file.create("R/prepare_data.R")
+  file.create("R/analyze_data.R")
 
   # Use roxygen2 for documentation
   usethis::use_roxygen_md()

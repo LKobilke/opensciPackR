@@ -12,12 +12,14 @@ Imports:
 	haven,
 	readr,
 	readxl,
-	roxygen2,
 	tools,
 	usethis,
 	utils
 Suggests: 
-    testthat (>= 3.0.0)
+    dplyr,
+	testthat (>= 3.0.0),
+	tidycomm,
+	tidyselect
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
