@@ -9,7 +9,7 @@ The key features of the package include:
 
 1. **Templated Structure:** `opensciPackR` provides a templated structure for creating new R packages. This structure is designed in accordance with the current R package design principles introduced by [Hadley Wickham and Jennifer Bryan](https://r-pkgs.org/) and helps in organizing, documenting, and sharing research data and analysis.
 
-2. **Customized R Package Creation:** The function `opensciPackR::create_openscipkg()` allows users to create a new open science R package with a standardized structure and setup. For example, it prompts the user to enter basic information about the package and the author, creates custom directories for data and their documentation, and generates core R scripts for data preparation and analysis. Note: The last feature is still under development.
+2. **Customized R Package Creation:** The function `opensciPackR::create_openscipkg()` allows users to create a new open science R package with a standardized structure and setup. For example, it prompts the user to enter basic information about the package and the author, creates custom directories for data and their documentation, and generates core R scripts for data preparation and analysis.
 
 3. **Data Uploading and Conversion:** The function `opensciPackR::upload_data()` allows users to upload datasets in various formats (csv, xlsx, xls, dat, sav, dta, RData, rda) and converts them to CSV format for archiving. It prompts the user to assign a new name to the dataset, adhering to good naming conventions. Additionally, it enables users to enter descriptions for their dataset and automatically generates the appropriate data documentation, which can be retrieved using the `help()` function.
 

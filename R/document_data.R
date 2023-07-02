@@ -24,7 +24,7 @@ document_data <- function(data_name, data_desc, path, data_format, data_source, 
   # Start of the Roxygen2 tags for the documentation
   roxygen_tags <- c(
     "",
-    paste0("#' ", data_name, "data"),
+    paste0("#' ", data_name, " dataset"),
     paste0("#' "),
     paste0("#' ", data_desc),
     "#' ",

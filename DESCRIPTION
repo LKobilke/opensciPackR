@@ -17,8 +17,10 @@ Imports:
 	utils
 Suggests: 
     dplyr,
+	magrittr,
 	testthat (>= 3.0.0),
 	tidycomm,
+	tidyr,
 	tidyselect
 Encoding: UTF-8
 LazyData: true

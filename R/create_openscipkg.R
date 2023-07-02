@@ -39,7 +39,7 @@ create_openscipkg <- function(package_name, path = NULL) {
     'Maintainer' = paste(author_name, '<', author_email, '>', sep = ''),
     'Description' = description_input,
     'License' = 'MIT',
-    'Imports' = 'learnr',
+    'Imports' = 'dplyr',
     'Encoding' = 'UTF-8',
     'LazyData' = 'true',
     'Authors@R' = paste0("person(given = \"", first_name,
@@ -91,12 +91,19 @@ create_openscipkg <- function(package_name, path = NULL) {
   dir.create("vignettes")
 
   # Install required packages
+  usethis::use_package("dplyr")
   usethis::use_package("learnr")
+  usethis::use_package("tidycomm")
+  usethis::use_package("tidyr")
+  usethis::use_package("tidyselect")
+
+  # Make pipe operator available
+  usethis::use_pipe()
 
   # Upload raw data
   data_path <- paste0(wd, "/data-raw", collapse = NULL)
   upload_data(path = data_path)
 
   # Return a message indicating the package was created
-  return("Open Science Template Package created successfully! If you want to get recommendations on what to do next with your package, see the README on https://github.com/LKobilke/opensciPackR.")
+  return("Open Science Template Package created successfully! If you want to get recommendations on what to do next with your package, see https://github.com/LKobilke/opensciPackR#next-steps-after-package-creation.")
 }
