@@ -3,7 +3,7 @@
 
 The `opensciPackR` is an R package that aims to promote the principles of open science by providing a streamlined approach to creating R packages specifically for research projects, e.g., for sharing data and code related to a published peer-reviewed paper. It is designed to ease the distribution, management, and analysis of structured research data.
 
-The main purpose of `opensciPackR` is the idea that by installing a package from GitHub that includes raw data, code for data preparation, analysis, and visualization, as well as comprehensive documentation, researchers can reproduce research faster and with fewer errors compared to downloading separate files and documentation from repositories.
+The main purpose of `opensciPackR` is the idea that by installing a package from GitHub that includes raw data, code for data preparation, analysis, and visualization, as well as comprehensive documentation, researchers can reproduce research faster and with fewer errors compared to downloading separate files and documentation from repositories such as OSF.
 
 The key features of the package include:
 
